@@ -52,16 +52,13 @@ assigned = list()
 quizzed = list()
 
 def both_check(subject):
-    print("Attempting check")
     driver.get(subject)
     assign = driver.find_elements_by_css_selector("[href*='/assign']")
     for x in range(len(assign)):
-        print("Assignment found")
         var1 = assign[x].get_attribute('href')
         assigned.append(var1)
     quiz = driver.find_elements_by_css_selector("[href*='/quiz']")
     for x in range(len(quiz)):
-        print("Quiz Found")
         var5 = quiz[x].get_attribute('href')
         quizzed.append(var5)
 
@@ -99,10 +96,9 @@ def quiz_date_check():
             print("Subject: " + subject)
             print("Information: " + titlebox)
 
-
-
 for x in range(len(links)):
     both_check(links[x])
+
 print(quizzed)
 assignment_date_check()
 quiz_date_check()
