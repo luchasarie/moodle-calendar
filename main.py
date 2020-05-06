@@ -37,22 +37,33 @@ print(links)
 
 print("Logging in...")
 driver.get(mainlogin)
+print("Please Input your username")
+username = input()
+print("Please Input your password")
+password = input()
 loginform = driver.find_element_by_id("login_username")
-loginform.send_keys("18010153")
+loginform.send_keys(username)
 passwordform = driver.find_element_by_id("login_password")
-passwordform.send_keys("16092002")
+passwordform.send_keys(password)
 passwordform.send_keys(Keys.RETURN)
 
 print("Setting up variables...")
 assigned = list()
 quizzed = list()
 
-def assignment_check(subject):
+def both_check(subject):
+    print("Attempting check")
     driver.get(subject)
     assign = driver.find_elements_by_css_selector("[href*='/assign']")
     for x in range(len(assign)):
+        print("Assignment found")
         var1 = assign[x].get_attribute('href')
         assigned.append(var1)
+    quiz = driver.find_elements_by_css_selector("[href*='/quiz']")
+    for x in range(len(quiz)):
+        print("Quiz Found")
+        var5 = quiz[x].get_attribute('href')
+        quizzed.append(var5)
 
 def assignment_date_check():
     for x in range(len(assigned)):
@@ -70,32 +81,28 @@ def assignment_date_check():
                     pass
                 else:
                     print("-----------")
-                    print("Assignment Found!")
                     print("Link: " + href)
                     print("Subject: " + subject)
                     print("Title: " + title)
                     print("Date: " + time_remaining)
 
 
-
-def quiz_check(subject):
-    driver.get(subject)  # Enters the subject's Link
-    quiz = driver.find_elements_by_css_selector("[href*='/quiz']")  # Gets all assignments in a page
-    for x in range(len(quiz)):  # Appends all links to a list.
-        var1 = quiz[x].get_attribute('href')
-        quizzed.append(var1)
-
-
-def quizz_date_check():
+def quiz_date_check():
     for x in range(len(quizzed)):
-        href = assigned[x]
+        href = quizzed[x]
         driver.get(href)
+        subject = driver.find_element_by_xpath("/html/body/div[3]/header/div/div[1]/nav/nav/ul/li[3]/span[1]/a/span").text
+        titlebox = driver.find_element_by_xpath("//*[@id='region-main']/div/div[1]").text
+        if "fechado" in titlebox:
+            print("-----------")
+            print("Link: " + href)
+            print("Subject: " + subject)
+            print("Information: " + titlebox)
+
 
 
 for x in range(len(links)):
-    assignment_check(links[x])
-    quiz_check(links[x])
-
-
+    both_check(links[x])
 print(quizzed)
 assignment_date_check()
+quiz_date_check()
