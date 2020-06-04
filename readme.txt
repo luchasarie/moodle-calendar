@@ -7,21 +7,19 @@ This program is made for Windows only, and it should work on any educational moo
 
 ### Prerequisites
 
-If building, you require ChromeDriver to run selenium. Otherwise, just the release should work. Be sure to run it as.
+Latest version of Google Chrome, and running the file as an administrator (It requires so to use the webdriver properly)
 
 ### Installing
 
-Unzip the moodle-calendar.zip file of the most recent release, and run the exe file. If you are not from FECAP, change the cfg file to 
+Unzip the moodlecalendar.zip file of the most recent release, and run the exe file.
 
 ## Built With
 
-* [Selenium](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+Selenium for the Webdriver, PyQt5 for the GUI.
 
 ## Authors
 
 * **Luchas Arie** - *Initial work* - [MagmaKnight](https://github.com/MagmaKnight)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 

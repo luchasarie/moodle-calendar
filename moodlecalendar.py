@@ -5,13 +5,14 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import sys
 import os
-import qtmodern.styles
-import qtmodern.windows
 import time
 
 assigned = list()
 quizzed = list()
-driver = webdriver.Chrome(ChromeDriverManager().install())
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+var4 = 0
 
 def check(subject):
     driver.get(subject)
@@ -28,6 +29,7 @@ class window(QtWidgets.QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle('Moodle Calendar')
+        self.setGeometry(0,0,800,800)
         tabWidget = QtWidgets.QTabWidget()
         tabWidget.addTab(mainTab(), "Application")
         tabWidget.addTab(configTab(), "Configuration")
@@ -132,9 +134,16 @@ class mainTab(QtWidgets.QWidget):
         passwordform = driver.find_element_by_id("login_password")
         passwordform.send_keys(password)
         passwordform.send_keys(Keys.RETURN)
+        self.terminalBox.append("Beginning checks.")
+        QtWidgets.qApp.processEvents()
+        var3 = 0
         for x in range(len(links)):
+            var3 = var3 + 1
             check(links[x])
+            self.terminalBox.append("Checking link number: " + str(var3))
+            QtWidgets.qApp.processEvents()
         self.terminalBox.append("Following assignments found:")
+        QtWidgets.qApp.processEvents()
         self.assignment_date_check()
         self.quiz_date_check()
         self.activateButton.setText('Finished')
@@ -167,7 +176,5 @@ class configTab(QtWidgets.QWidget):
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     win = window()
-    qtmodern.styles.dark(app)
-    mw = qtmodern.windows.ModernWindow(win)
-    mw.show()
+    win.show()
     sys.exit(app.exec_())
