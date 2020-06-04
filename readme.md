@@ -15,15 +15,12 @@ Unzip the moodlecalendar.zip file of the most recent release, and run the exe fi
 
 ## Built With
 
-* [Selenium]() - Used for the WebDriver function to check for assignments.
-* [PyQT5]() - Used for the Visual Interface.
+* [Python 3.8](https://www.python.org/) - Language used to program.
+* [Selenium](https://www.selenium.dev/) - Used for the WebDriver function to check for assignments.
+* [PyQT5](https://www.riverbankcomputing.com/software/pyqt/download5) - Used for the Visual Interface.
 
 ## Authors
 
 * **Luchas Arie** - *Initial work* - [MagmaKnight](https://github.com/MagmaKnight)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 
