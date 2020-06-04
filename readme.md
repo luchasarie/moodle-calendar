@@ -1,5 +1,5 @@
 # Moodle Calendar
-A simple Python program to check Moodle for any assignment.
+A simple Python program to check Moodle for any assignment. Only for Windowss so far.
 
 ## Getting Started
 
@@ -7,15 +7,16 @@ This program is made for Windows only, and it should work on any educational moo
 
 ### Prerequisites
 
-Latest version of Google Chrome, and running the file as an administrator (It requires so to use the webdriver properly)
+Latest version of Google Chrome.
 
 ### Installing
 
-Unzip the moodlecalendar.zip file of the most recent release, and run the exe file.
+Unzip the moodlecalendar.zip file of the most recent release, and run the exe file. Be sure to have the latest update of Google Chrome, and be running the .exe as an admin. 
 
 ## Built With
 
-Selenium for the Webdriver, PyQt5 for the GUI.
+* [Selenium]() - Used for the WebDriver function to check for assignments.
+* [PyQT5]() - Used for the Visual Interface.
 
 ## Authors
 
