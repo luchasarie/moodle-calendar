@@ -1,5 +1,5 @@
 # Moodle Calendar
-A simple Python program to check Moodle for any assignment. Only for Windowss so far.
+A simple Python program to check Moodle for any assignment. Only for Windows so far.
 
 ## Getting Started
 
